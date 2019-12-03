@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Aviation Gathering
+    </ion-title>
+    <ion-icon name="chatbubbles" *ngIf="userLoginStatus" (click)="goToSingleChat()" slot="end" style="font-size: 30px;"></ion-icon><sup
+      *ngIf="userLoginStatus" slot="end" style="color: red; font-size: medium;">{{ messagesCount }}</sup>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="!isLoadedActiveEvents">
+    <h4>Open For Sale Events</h4>
+    <p class="keep-spinner">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+  <div class="keepActiveEvents" *ngIf="isLoadedActiveEvents">
+    <h4>Open For Sale Events</h4>
+    <div *ngFor="let item of activeEvents">
+      <ion-card class="welcome-card">
+        <img src="{{ eventsProfileImageUrl + item.Img }}" alt="" />
+        <ion-card-header>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-card-subtitle slot="start" class="location">{{ item.Location }}</ion-card-subtitle>
+            <ion-card-subtitle slot="end" class="limitedSeats">Limited Seats {{ item.NormalSeats }}
+            </ion-card-subtitle>
+          </ion-item>
+          <ion-card-title class="activeEventTitle">{{ item.Title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="summery">{{ item.Summary }}</p>
+          <p class="startDate"><span>Start Date: </span>{{ item.StartDate }}</p>
+          <p class="endDate"><span>End Date: </span>{{ item.EndDate }}</p>
+          <p align="center" class="keepButton">
+            <ion-button expand="block" color="primary" (click)="bookTicket(item.EventID)" size="small">BOOK YOUR
+              TICKET
+            </ion-button>
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <div>
+    <h2>Download the Users List</h2>
+    <a href="http://mobile.aviationgathering.ae/pdffiles/eventsubscribers/UsersList.pdf">Click to Download</a>
+  </div>
+
+
+  <div *ngIf="!isLoadedAllEvents">
+    <h4 style="margin-bottom: 10px !important;">All Events</h4>
+    <p class="keep-spinner">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+  <div class="all-events-block" *ngIf="isLoadedAllEvents">
+    <h4 style="margin-bottom: 10px !important;">All Events</h4>
+
+    <ion-slides [options]="sliderConfig" class="slidesAllEvents">
+      <ion-slide *ngFor="let item of allEvents">
+        <ion-card class="cardAllEvents">
+          <img src="{{ eventsProfileImageUrl + item.Img }}" alt="" />
+          <ion-card-content>
+            <h5 style="font-weight: bold; margin-bottom: 10px;">{{ item.Title }}</h5>
+            <h6 style="margin-bottom: 30px;">{{ item.Location }}</h6>
+            <ion-button expand="block" color="primary" (click)="bookTicket(item.EventID)" size="small">DETAILS
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+
+  <div *ngIf="!isLoadedNews">
+    <h4 style="font-weight: bold;" slot="start">Latest News</h4>
+    <p class="keep-spinner">
+      <ion-spinner name="bubbles" style="font-size: xx-large;"></ion-spinner>
+    </p>
+  </div>
+  <div class="all-news-block" *ngIf="isLoadedNews">
+    <ion-item lines="none">
+      <h4 style="font-weight: bold;" slot="start">Latest News</h4>
+      <ion-button slot="end" expand="block" color="primary" fill="outline" (click)="showMoreNews()" size="small">Show
+        More
+      </ion-button>
+    </ion-item>
+
+    <ion-slides [options]="sliderConfig" class="slidesAllEvents">
+      <ion-slide *ngFor="let item of allNews">
+        <ion-card class="cardAllEvents">
+          <img src="{{ newsImageUrl + item.Image }}" alt="" />
+          <p>{{ item.PublishedDate }}</p>
+          <ion-card-content>
+            <h5 style="font-weight: bold; margin-bottom: 10px;">{{ item.Title }}</h5>
+            <ion-button expand="block" color="primary" (click)="showNewsDetail(item.NewsID)" size="small">DETAILS
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <p id="demo" class="CountDown"></p>
+</ion-content>

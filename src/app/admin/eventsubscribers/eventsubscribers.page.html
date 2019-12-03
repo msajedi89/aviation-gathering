@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" color="dark">
+        <ion-icon name="arrow-back" slot="start"
+          style="padding-right: 0px !important; margin-right: 0px !important; font-size: 30px;">
+        </ion-icon>Back
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Event
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <img src="{{ eventImage }}" alt="">
+    <ion-card-header>
+      <ion-card-title color="primary" style="margin-bottom: 15px !important;">
+        {{ event.Title }}
+      </ion-card-title>
+      <p>{{ event.Summary }}</p>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>Subscribers</ion-list-header>
+    <div *ngFor="let item of eventSubscribers;">
+      <ion-item (click)="goForChat()">
+        <ion-avatar slot="start">
+          <img src="{{ userProfileImageURL + item.ProfileImg }}" alt="">
+        </ion-avatar>
+        <ion-label>
+          <h2 style="white-space: normal;">{{ item.Username }}</h2>
+          <p style="white-space: normal;">Ticket Count: {{ item.Count }}</p>
+        </ion-label>
+        <ion-note slot="end">{{ item.SaleDate | date }}</ion-note>
+      </ion-item>
+    </div>
+  </ion-list>
+
+</ion-content>

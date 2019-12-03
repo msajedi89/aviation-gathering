@@ -1,0 +1,107 @@
+// active events part
+.keepActiveEvents {
+  .welcome-card {
+
+    img {
+      max-height: 35vh;
+      overflow: hidden;
+    }
+
+    .summery {
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+
+    .keepButton {
+      margin-top: 30px;
+      
+      ion-button {
+        --border-radius: 50px;
+        width: 200px;
+      }
+    }
+  }
+
+  h4 {
+    margin-left: 10px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .activeEventTitle {
+    color: var(--ion-color-primary);
+  }
+
+  .limitedSeats {
+    color: var(--ion-color-danger);
+  }
+
+  .location {
+    color: var(--ion-color-medium);
+  }
+
+  .startDate {
+    margin-top: 20px;
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .endDate {
+    span {
+      font-weight: bold;
+    }
+  }
+
+}
+
+h4 {
+  margin-left: 10px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.keep-spinner {
+  //border: 1px solid red;
+  text-align: center;
+}
+
+// all events part
+.all-events-block {
+  margin-top: 70px;
+
+  h4 {
+    margin-left: 10px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .slidesAllEvents {
+    padding: 5px;
+  
+    .cardAllEvents {
+      margin-left: 2px !important;
+      margin-right: 2px !important;
+    }
+  }
+}
+
+
+// all news part
+.all-news-block {
+  margin-top: 10px;
+  .slidesAllEvents {
+    padding: 5px;
+  
+    .cardAllEvents {
+      margin-left: 2px !important;
+      margin-right: 2px !important;
+    }
+  }
+}
+
+.CountDown {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 80px;
+}

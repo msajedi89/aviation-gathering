@@ -1,0 +1,21 @@
+.add-news-button {
+    --border-radius: 50px;
+    width: 200px;
+}
+
+ion-item-sliding {
+    margin-top: 5px;
+
+    ion-item {
+        --min-height: 100px;
+    
+        ion-thumbnail {
+            height: 100px;
+            width: 100px;
+    
+            img {
+                border-radius: 15px;
+            }
+        }
+    }
+}
