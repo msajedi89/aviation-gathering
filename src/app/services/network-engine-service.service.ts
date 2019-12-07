@@ -393,4 +393,39 @@ export class NetworkEngineServiceService {
     return request.toPromise();
   }
 
+  // generate PDF
+  generatePDF(eventID, event): Promise<any> {
+    const url = this.mainUrl + "generatePDF.php";
+
+    const param = {
+      eventID: eventID, event: event
+    };
+
+    let request = this.http.post(url, param);
+
+    return request.toPromise();
+  }
+
+  // get All Customers For Managing
+  getAllCustomersForManaging(): Promise<any> {
+    let url = this.mainUrl + 'getAllCustomersForManaging.php';
+
+    let request = this.http.get(url);
+
+    return request.toPromise();
+  }
+
+  // update User Status
+  updateUserStatus(userID, status): Promise<any> {
+    const url = this.mainUrl + "updateUserStatus.php";
+
+    const param = {
+      userID: userID, status: status
+    };
+
+    let request = this.http.post(url, param);
+
+    return request.toPromise();
+  }
+
 }

@@ -6,8 +6,8 @@
     <ion-title>
       Aviation Gathering
     </ion-title>
-    <ion-icon name="chatbubbles" *ngIf="userLoginStatus" (click)="goToSingleChat()" slot="end" style="font-size: 30px;"></ion-icon><sup
-      *ngIf="userLoginStatus" slot="end" style="color: red; font-size: medium;">{{ messagesCount }}</sup>
+    <ion-icon name="chatbubbles" *ngIf="userLoginStatus" (click)="goToSingleChat()" slot="end" style="font-size: 30px;">
+    </ion-icon><sup *ngIf="userLoginStatus" slot="end" style="color: red; font-size: medium;">{{ messagesCount }}</sup>
   </ion-toolbar>
 </ion-header>
 
@@ -22,8 +22,9 @@
   <div class="keepActiveEvents" *ngIf="isLoadedActiveEvents">
     <h4>Open For Sale Events</h4>
     <div *ngFor="let item of activeEvents">
-      <ion-card class="welcome-card">
-        <img src="{{ eventsProfileImageUrl + item.Img }}" alt="" />
+
+      <ion-card class="keep-active-events-card" [style.background-image]="getBackground(item.Img)"
+        (click)="bookTicket(item.EventID)">
         <ion-card-header>
           <ion-item lines="none" class="ion-no-padding">
             <ion-card-subtitle slot="start" class="location">{{ item.Location }}</ion-card-subtitle>
@@ -33,24 +34,14 @@
           <ion-card-title class="activeEventTitle">{{ item.Title }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p class="summery">{{ item.Summary }}</p>
+          <p class="summery">{{ item.Summary }} - Click to see Details</p>
           <p class="startDate"><span>Start Date: </span>{{ item.StartDate }}</p>
           <p class="endDate"><span>End Date: </span>{{ item.EndDate }}</p>
-          <p align="center" class="keepButton">
-            <ion-button expand="block" color="primary" (click)="bookTicket(item.EventID)" size="small">BOOK YOUR
-              TICKET
-            </ion-button>
-          </p>
         </ion-card-content>
       </ion-card>
+
     </div>
   </div>
-
-  <div>
-    <h2>Download the Users List</h2>
-    <a href="http://mobile.aviationgathering.ae/pdffiles/eventsubscribers/UsersList.pdf">Click to Download</a>
-  </div>
-
 
   <div *ngIf="!isLoadedAllEvents">
     <h4 style="margin-bottom: 10px !important;">All Events</h4>
@@ -84,26 +75,26 @@
     </p>
   </div>
   <div class="all-news-block" *ngIf="isLoadedNews">
-    <ion-item lines="none">
+    <ion-item lines="none" class="keep-news-title">
       <h4 style="font-weight: bold;" slot="start">Latest News</h4>
       <ion-button slot="end" expand="block" color="primary" fill="outline" (click)="showMoreNews()" size="small">Show
         More
       </ion-button>
     </ion-item>
 
-    <ion-slides [options]="sliderConfig" class="slidesAllEvents">
-      <ion-slide *ngFor="let item of allNews">
-        <ion-card class="cardAllEvents">
-          <img src="{{ newsImageUrl + item.Image }}" alt="" />
-          <p>{{ item.PublishedDate }}</p>
-          <ion-card-content>
-            <h5 style="font-weight: bold; margin-bottom: 10px;">{{ item.Title }}</h5>
-            <ion-button expand="block" color="primary" (click)="showNewsDetail(item.NewsID)" size="small">DETAILS
-            </ion-button>
-          </ion-card-content>
-        </ion-card>
-      </ion-slide>
-    </ion-slides>
+    <ion-list style="margin-top: 10px;">
+      <ion-item-sliding *ngFor="let item of allNews">
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <img src="{{ newsImageUrl + item.Image }}" alt="">
+          </ion-thumbnail>
+          <ion-label>
+            <p class="news-summary">{{ item.Summary }} - <span class="show-news-details" (click)="showNewsDetail(item.NewsID)">Show More</span></p>
+            <h3 class="news-date">{{ item.PublishedDate | date }}</h3>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
   </div>
 
   <p id="demo" class="CountDown"></p>

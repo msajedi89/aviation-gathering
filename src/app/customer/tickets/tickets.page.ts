@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 
 const TOKEN_KEY = 'auth-token';
 const TICKET_ID_TO_SHOW_DETAILS = 'ticketidtoshowdetails';
+const FROM_WHERE = 'fromwhere';
 
 @Component({
   selector: 'app-tickets',
@@ -66,7 +67,9 @@ export class TicketsPage implements OnInit {
 
   showDetails(ticketID) {
     this.storage.set(TICKET_ID_TO_SHOW_DETAILS, ticketID).then(() => {
-      this.router.navigate(['ticketdetails']);
+      this.storage.set(FROM_WHERE, 'tickets').then(() => {
+        this.router.navigate(['ticketdetails']);
+      });
     });
   }
 

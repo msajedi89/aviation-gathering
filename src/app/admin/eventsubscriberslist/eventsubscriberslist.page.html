@@ -8,7 +8,7 @@
       </ion-button>
     </ion-buttons>
     <ion-title>
-      Event
+      {{ event.Title }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -22,12 +22,19 @@
         {{ event.Title }}
       </ion-card-title>
       <p>{{ event.Summary }}</p>
-      <p>You can chat with Subscribers by clicking on them.</p>
+      <p>You can see Ticket Details by clicking on each subscriber you want.</p>
     </ion-card-header>
   </ion-card>
 
   <ion-list>
-    <ion-list-header>Subscribers</ion-list-header>
+    <ion-item lines="none">
+      <h5 style="margin-bottom: 15px;" slot="start">Subscribers</h5>
+      <ion-button slot="end" *ngIf="eventSubscribers != '0 result'" expand="block" color="primary" fill="outline"
+        (click)="downloadAsPDF()" size="small">
+        Download as PDF
+      </ion-button>
+    </ion-item>
+
 
     <div style="text-align: center;" *ngIf="!isLoaded">
       <p>
@@ -41,8 +48,11 @@
       </div>
 
       <div class="all-subscribers" *ngIf="eventSubscribers != '0 result'">
+        <div class="keep-pdf-download-link">
+          <a href="{{ pdfLink }}" *ngIf="pdfLinkIsReady">Click to Download</a>
+        </div>
         <div *ngFor="let item of eventSubscribers;">
-          <ion-item (click)="goForChat(item.UserID)">
+          <ion-item (click)="showDetails(item.TicketID)">
             <ion-avatar slot="start">
               <img src="{{ userProfileImageURL + item.ProfileImg }}" alt="">
             </ion-avatar>

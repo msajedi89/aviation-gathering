@@ -37,7 +37,12 @@ const routes: Routes = [
   { path: 'groupchats', loadChildren: './chats/groupchats/groupchats.module#GroupchatsPageModule' },
   { path: 'listallsubscribers', loadChildren: './chats/listallsubscribers/listallsubscribers.module#ListallsubscribersPageModule' },
   { path: 'editprofile', loadChildren: './customer/editprofile/editprofile.module#EditprofilePageModule' },
-  { path: 'eventslist', loadChildren: './admin/eventslist/eventslist.module#EventslistPageModule' }
+  { path: 'eventslist', loadChildren: './admin/eventslist/eventslist.module#EventslistPageModule' },
+  { path: 'eventsubscriberslist', loadChildren: './admin/eventsubscriberslist/eventsubscriberslist.module#EventsubscriberslistPageModule' },
+  { path: 'signupdetails', loadChildren: './login/signupdetails/signupdetails.module#SignupdetailsPageModule' },
+  { path: 'newsdetails', loadChildren: './pages/newsdetails/newsdetails.module#NewsdetailsPageModule' },
+  { path: 'managecustomers', loadChildren: './admin/managecustomers/managecustomers.module#ManagecustomersPageModule' },
+  { path: 'customerdetails', loadChildren: './admin/customerdetails/customerdetails.module#CustomerdetailsPageModule' }
 ];
 
 @NgModule({

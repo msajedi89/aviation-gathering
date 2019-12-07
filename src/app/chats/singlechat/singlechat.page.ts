@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 
 const TOKEN_KEY = 'auth-token';
 const CUSTOMER_ID_FOR_SINGLE_CHAT = 'userchatidforsinglechat';
+const FROM_WHERE = 'fromwhere';
 
 @Component({
   selector: 'app-singlechat',
@@ -22,9 +23,11 @@ export class SinglechatPage implements OnInit {
   userProfileImgURL = '';
   userSendProfileImg = '';
   userSendName = '';
+  userGetNameFamily = ''
 
   whoIs = '';
   isLoaded = false;
+  fromWhere = '';
 
   allMsgs: any = [];
 
@@ -75,6 +78,7 @@ export class SinglechatPage implements OnInit {
           const jsonArray2 = adminData;
           this.userGetInfo = jsonArray2[0];
           this.userGetDeviceId = this.userGetInfo.DeviceID;
+          this.userGetNameFamily = this.userGetInfo.Name + ' ' + this.userGetInfo.Family;
         }).catch(err => {
           console.log(JSON.stringify(err));
           //this.presentAlert('Please check your internet connection!!');
@@ -104,6 +108,7 @@ export class SinglechatPage implements OnInit {
             const jsonArray2 = customerData;
             this.userGetInfo = jsonArray2[0];
             this.userGetDeviceId = this.userGetInfo.DeviceID;
+            this.userGetNameFamily = this.userGetInfo.Name + ' ' + this.userGetInfo.Family;
           }).catch(err => {
             console.log(JSON.stringify(err));
             //this.presentAlert('Please check your internet connection!!');
@@ -111,6 +116,25 @@ export class SinglechatPage implements OnInit {
         });
       }
     });
+
+    // get the root for back button
+    this.storage.get(FROM_WHERE).then(fromWhereResult => {
+      this.fromWhere = fromWhereResult;
+    });
+  }
+
+  goBack() {
+    if (this.whoIs == 'customer') {
+      this.router.navigate(['home']);
+    } else {
+      if (this.fromWhere == 'eventsubscribers') {
+        this.router.navigate(['eventsubscribers']);
+      } else if (this.fromWhere == 'listallsubscribers'){
+        this.router.navigate(['listallsubscribers']);
+      } else {
+        this.router.navigate(['home']);
+      }
+    }
   }
 
   async presentAlert(text) {

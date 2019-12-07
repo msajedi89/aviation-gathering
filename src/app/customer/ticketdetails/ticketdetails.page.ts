@@ -5,6 +5,7 @@ import { NavController, Platform, ToastController, AlertController } from '@ioni
 import { Storage } from '@ionic/storage';
 
 const TICKET_ID_TO_SHOW_DETAILS = 'ticketidtoshowdetails';
+const FROM_WHERE = 'fromwhere';
 
 @Component({
   selector: 'app-ticketdetails',
@@ -19,6 +20,7 @@ export class TicketdetailsPage implements OnInit {
   eventImage = '';
 
   isLoaded = false;
+  fromWhere = '';
 
   constructor(private network: NetworkEngineServiceService, public navCtrl: NavController, public plt: Platform, public storage: Storage,
     private router: Router, private toastCtrl: ToastController, private alertCtrl: AlertController) { }
@@ -42,10 +44,19 @@ export class TicketdetailsPage implements OnInit {
         this.presentAlert('Please check your internet connection');
       });
     });
+
+    // get the root for back button
+    this.storage.get(FROM_WHERE).then(fromWhereResult => {
+      this.fromWhere = fromWhereResult;
+    });
   }
 
   goBack() {
-    this.router.navigate(['tickets']);
+    if (this.fromWhere == 'tickets') {
+      this.router.navigate(['tickets']);
+    } else {
+      this.router.navigate(['eventsubscriberslist']);
+    }
   }
 
   async presentAlert(text) {

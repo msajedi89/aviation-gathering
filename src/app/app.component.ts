@@ -58,7 +58,7 @@ export class AppComponent {
     {
       title: 'Customer Chats',
       url: '/adminnewsinglechats',
-      icon: 'chatbubbles'
+      icon: 'text'
     },
     {
       title: 'Group Chats',
@@ -72,12 +72,12 @@ export class AppComponent {
     },
     {
       title: 'Event Subscribers',
-      url: '/list',
-      icon: 'list-box'
+      url: '/eventslist',
+      icon: 'card'
     },
     {
       title: 'Manage Customers',
-      url: '/list',
+      url: '/managecustomers',
       icon: 'people'
     },
     {
@@ -101,7 +101,7 @@ export class AppComponent {
     {
       title: 'Chat with Admin',
       url: '/singlechat',
-      icon: 'chatbubbles'
+      icon: 'text'
     },
     {
       title: 'Event Chat Groups',

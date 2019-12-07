@@ -17,6 +17,8 @@ export class ManageeventsPage implements OnInit {
   allEvents: any = '';
   eventsImageURL = '';
 
+  isLoaded = false;
+
   constructor(private network: NetworkEngineServiceService, public navCtrl: NavController, public plt: Platform, public storage: Storage,
     private router: Router, private toastCtrl: ToastController, private alertCtrl: AlertController) { }
 
@@ -29,7 +31,8 @@ export class ManageeventsPage implements OnInit {
 
     this.network.getAllEventsForManaging().then(eventsData => {
       this.allEvents = eventsData;
-      //console.log()
+      this.isLoaded = true;
+      console.log('the events recieved...');
     }).catch(err => {
       console.log(JSON.stringify(err));
       this.presentAlert('Please check your internet connection!!');

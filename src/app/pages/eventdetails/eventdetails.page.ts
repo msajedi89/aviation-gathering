@@ -28,7 +28,7 @@ export class EventdetailsPage implements OnInit {
       this.network.getEventByEventID(this.eventID).then(eventData => {
         const jsonArray = eventData;
         this.event = jsonArray[0];
-        console.log('the Event to show details: ' + JSON.stringify(this.event));
+        console.log('the Event recieved...');
 
         this.eventImage = this.network.mainEventImagesUrl + this.event.Img;
 

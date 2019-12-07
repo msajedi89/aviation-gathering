@@ -5,6 +5,7 @@ import { NavController, Platform, ToastController, AlertController } from '@ioni
 import { Storage } from '@ionic/storage';
 
 const CUSTOMER_ID_FOR_SINGLE_CHAT = 'userchatidforsinglechat';
+const FROM_WHERE = 'fromwhere';
 
 @Component({
   selector: 'app-listallsubscribers',
@@ -44,7 +45,9 @@ export class ListallsubscribersPage implements OnInit {
 
   goForChat(userID) {
     this.storage.set(CUSTOMER_ID_FOR_SINGLE_CHAT, userID).then(() => {
-      this.router.navigate(['singlechat']);
+      this.storage.set(FROM_WHERE, 'listallsubscribers').then(() => {
+        this.router.navigate(['singlechat']);
+      });
     });
   }
 

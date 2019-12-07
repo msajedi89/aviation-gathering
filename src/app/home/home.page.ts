@@ -5,9 +5,12 @@ import { NavController, Platform, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { AuthenticationService } from '../services/authentication.service';
 import { AppComponent } from '../app.component';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 const TOKEN_KEY = 'auth-token';
 const EVENTIDFORSHOWDETAILS = 'eventIdForShowDetails';
+const NEWS_ID_TO_SHOW_DETAILS = 'newsidfordetails';
+const FROM_WHERE_FOR_NEWS = 'fromwherefornews';
 
 @Component({
   selector: 'app-home',
@@ -47,7 +50,8 @@ export class HomePage {
   isLoadedNews = false;
 
   constructor(private network: NetworkEngineServiceService, public navCtrl: NavController, public plt: Platform, public storage: Storage,
-    private router: Router, private authService: AuthenticationService, public appComponent: AppComponent, private alertCtrl: AlertController) {
+    private router: Router, private authService: AuthenticationService, public appComponent: AppComponent, private alertCtrl: AlertController,
+    private _sanitizer: DomSanitizer) {
 
     // get the Avtive Events
     this.plt.ready().then(() => {
@@ -111,6 +115,11 @@ export class HomePage {
 
   }
 
+  getBackground(img) {
+    let image = this.eventsProfileImageUrl + img;
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
+  }
+
   async presentAlert(text) {
     const alertCt = await this.alertCtrl.create({
       message: text
@@ -166,6 +175,15 @@ export class HomePage {
         document.getElementById("demo").innerHTML = "EXPIRED";
       }
     }, 1000);
+  }
+
+
+  showNewsDetail(newsID) {
+    this.storage.set(FROM_WHERE_FOR_NEWS, 'home').then(() => {
+      this.storage.set(NEWS_ID_TO_SHOW_DETAILS, newsID).then(() => {
+        this.router.navigate(['newsdetails']);
+      });
+    });
   }
 
 }

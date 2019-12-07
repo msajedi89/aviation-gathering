@@ -1,58 +1,40 @@
-// active events part
-.keepActiveEvents {
-  .welcome-card {
 
-    img {
-      max-height: 35vh;
-      overflow: hidden;
+// keep active events
+.keep-active-events-card {
+  //--background: url(../../assets/background-3.jpg);
+  //height: 200px;
+  background-size: cover;
+
+  .ion-no-padding {
+    --background: transparent !important;
+
+    .location {
+      color: white !important;
     }
 
-    .summery {
-      margin-top: 0px;
-      padding-top: 0px;
+    .limitedSeats {
+      color: var(--ion-color-danger);
     }
-
-    .keepButton {
-      margin-top: 30px;
-      
-      ion-button {
-        --border-radius: 50px;
-        width: 200px;
-      }
-    }
-  }
-
-  h4 {
-    margin-left: 10px;
-    margin-bottom: 30px;
-    font-weight: bold;
   }
 
   .activeEventTitle {
-    color: var(--ion-color-primary);
+    color: #fff !important;
   }
 
-  .limitedSeats {
-    color: var(--ion-color-danger);
-  }
-
-  .location {
-    color: var(--ion-color-medium);
+  .summery {
+    margin-top: 0px !important;
+    padding-top: 0px;
+    color: #000 !important;
   }
 
   .startDate {
-    margin-top: 20px;
-    span {
-      font-weight: bold;
-    }
+    margin-top: 10px !important;
+    color: var(--ion-color-success) !important;
   }
 
   .endDate {
-    span {
-      font-weight: bold;
-    }
+    color: var(--ion-color-success) !important;
   }
-
 }
 
 h4 {
@@ -90,6 +72,46 @@ h4 {
 // all news part
 .all-news-block {
   margin-top: 10px;
+
+  .keep-news-title {
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  ion-item-sliding {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    margin-bottom: 15px !important;
+  }
+
+  ion-item {
+    --min-height: 100px;
+
+    ion-thumbnail {
+        height: 100px;
+        width: 100px;
+
+        img {
+          border-radius: 15px;
+        }
+    }
+
+    .news-summary {
+      white-space: normal;
+      color: #000;
+    }
+
+    .show-news-details {
+      color: var(--ion-color-primary) !important;
+    }
+
+    .news-date {
+      margin-top: 8px !important;
+      font-size: small; 
+      color: var(--ion-color-danger) !important;
+    }
+  }
+
   .slidesAllEvents {
     padding: 5px;
   
