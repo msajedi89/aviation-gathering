@@ -1,3 +1,7 @@
+ion-content {
+    --ion-background-color: #ffeac9;
+}
+
 .headerDiv {
     margin-bottom: 0px !important;
     padding-bottom: 0px;
@@ -21,6 +25,7 @@ h4 {
     margin-left: 10px;
     margin-bottom: 30px;
     font-weight: bold;
+    color: var(--ion-color-dark);
 }
 
 .seats-price {
@@ -30,7 +35,7 @@ h4 {
 }
 
 .seats-left {
-    color: var(--ion-color-primary);
+    color: var(--ion-color-dark);
     font-size: 16px;
     font-weight: bold;
 }

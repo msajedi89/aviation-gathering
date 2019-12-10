@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 
 const TICKET_ID_TO_SHOW_DETAILS = 'ticketidtoshowdetails';
 const FROM_WHERE = 'fromwhere';
+const FROM_WHERE_PAYPAL = 'fromwherepaypal';
 
 @Component({
   selector: 'app-ticketdetails',
@@ -54,8 +55,12 @@ export class TicketdetailsPage implements OnInit {
   goBack() {
     if (this.fromWhere == 'tickets') {
       this.router.navigate(['tickets']);
-    } else {
+    } else if (this.fromWhere == 'customertickets') {
+      this.router.navigate(['customertickets']);
+    } else if (this.fromWhere == 'eventsubscriberslist'){
       this.router.navigate(['eventsubscriberslist']);
+    } else {
+      this.router.navigate(['home']);
     }
   }
 
@@ -68,7 +73,9 @@ export class TicketdetailsPage implements OnInit {
   }
 
   goForPayment() {
-    this.router.navigate(['paypalpage']);
+    this.storage.set(FROM_WHERE_PAYPAL, 'ticketdetails').then(() => {
+      this.router.navigate(['paypalpage']);
+    });
   }
 
 }

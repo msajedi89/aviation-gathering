@@ -225,12 +225,14 @@ export class AddorediteventPage implements OnInit {
 
     if ((title != null) && (title != '')) {
       if ((startDate != null) && (endDate != null)) {
-        const startDateCorr = startDate.split('.')[0];
-        const endDateCorr = endDate.split('.')[0];
+        const startDateCorr = startDate.split('+')[0];
+        const endDateCorr = endDate.split('+')[0];
+        console.log('startDateCorr: ' + startDateCorr);
+        console.log('endDateCorr: ' + endDateCorr);
 
         if (this.isRanked) {
-          if ((normalSeats != null) && (normalSeats != '') && (normalPrice != null) && (normalPrice != '')) {
-            if ((vipSeats != null) && (vipSeats != 0) && (vipPrice != null) && (vipPrice != 0)) {
+          if ((normalSeats != '') && (normalPrice != '') && (normalSeats != null) && (normalPrice != null)) {
+            if ((vipSeats != '') && (vipPrice != '') && (vipSeats != null) && (vipPrice != null)) {
               // Proceed to save data
               console.log('can save');
               this.network.addOrEditEvent(this.eventID, title, summary, description, vipGuests, startDateCorr, endDateCorr, normalSeats, isRankedNo, normalPrice, vipSeats, vipPrice, this.eventImageFileName, openTicketNo, location, this.forAddOrEdit).then(savingResult => {

@@ -4,9 +4,11 @@ import { NetworkEngineServiceService } from '../../services/network-engine-servi
 import { NavController, Platform, ToastController, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 const TICKET_ID_TO_SHOW_DETAILS = 'ticketidtoshowdetails';
 const TOKEN_KEY = 'auth-token';
+const FROM_WHERE_PAYPAL = 'fromwherepaypal';
 
 @Component({
   selector: 'app-paypalpage',
@@ -30,6 +32,7 @@ export class PaypalpagePage implements OnInit {
 
   appSettings: any = '';
   dollarExchange = 0;
+  fromWhere = '';
 
   user: any = '';
   userProfileImg = '';
@@ -89,6 +92,13 @@ export class PaypalpagePage implements OnInit {
     }).catch(errAdmin => {
       console.log(JSON.stringify(errAdmin));
     });
+
+
+    // get the root for back button
+    this.storage.get(FROM_WHERE_PAYPAL).then(fromWhereResult => {
+      this.fromWhere = fromWhereResult;
+      console.log('from where came to this page: ' + this.fromWhere);
+    });
   }
 
   // exchange Total price method
@@ -120,7 +130,13 @@ export class PaypalpagePage implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['home']);
+    if (this.fromWhere == 'tickets') {
+      this.router.navigate(['tickets']);
+    } else if (this.fromWhere == 'ticketdetails') {
+      this.router.navigate(['ticketdetails']);
+    } else {
+      this.router.navigate(['home']);
+    }
   }
 
   payWithPaypal() {

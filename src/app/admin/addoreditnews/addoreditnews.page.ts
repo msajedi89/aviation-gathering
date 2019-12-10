@@ -186,6 +186,12 @@ export class AddoreditnewsPage implements OnInit {
           const jsonArray = savingResult;
           if (jsonArray == 'Successful') {
             this.presentToast('Event has been saved successfully...');
+            let ntfImage = this.network.mainNewsImagesUrl + this.newsImageFileName;
+            this.network.sendNotification(title, summary, ntfImage, '', 'topic', 'all').then(ntfResult => {
+              console.log(JSON.stringify(ntfResult));
+            }).catch(errNtf => {
+              console.log(JSON.stringify(errNtf));
+            });
           } else {
             alert('Something goes wrong, Please try again');
           }

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-button (click)="goBack()" color="dark">
         <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
-        </ion-icon>Back
+        </ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
@@ -24,11 +24,11 @@
     </ion-item>
     <ion-item>
       <ion-label slot="start">Summary: </ion-label>
-      <ion-textarea type="text" [(ngModel)]="summary" value="{{ event.Summary }}"></ion-textarea>
+      <ion-textarea type="text" rows="3" [(ngModel)]="summary" value="{{ event.Summary }}"></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label>Description: </ion-label>
-      <ion-textarea type="text" [(ngModel)]="description" value="{{ event.Description }}"></ion-textarea>
+      <ion-textarea type="text" rows="5" [(ngModel)]="description" value="{{ event.Description }}"></ion-textarea>
     </ion-item>
   </ion-list>
 
@@ -39,7 +39,7 @@
     <ion-item>
       <ion-icon name="ribbon" slot="start"></ion-icon>
       <ion-label>VIP Guests: </ion-label>
-      <ion-textarea type="text" [(ngModel)]="vipGuests" value="{{ event.VipGuests }}"></ion-textarea>
+      <ion-textarea type="text" rows="3" [(ngModel)]="vipGuests" value="{{ event.VipGuests }}"></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-icon name="pin"></ion-icon>
@@ -84,11 +84,11 @@
         <ion-label slot="start" style="font-size: small;">Price for Normal Seats(AED): </ion-label>
         <ion-input type="text" [(ngModel)]="normalPrice" placeholder="Required" value="{{ event.NormalPrice }}"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="isRanked">
         <ion-label slot="start">VIP Seats Count: </ion-label>
         <ion-input type="text" [(ngModel)]="vipSeats" placeholder="Required" value="{{ event.VipSeats }}"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="isRanked">
         <ion-label slot="start" style="font-size: small;">Price for VIP Seats(AED): </ion-label>
         <ion-input type="text" [(ngModel)]="vipPrice" placeholder="Required" value="{{ event.VipPrice }}"></ion-input>
       </ion-item>

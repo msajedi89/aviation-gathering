@@ -1,3 +1,7 @@
+ion-content {
+  --ion-background-color: #ffeac9;
+}
+
 .keep-ticket {
     .welcome-card {
   
@@ -19,6 +23,10 @@
           width: 200px;
         }
       }
+
+      .ion-no-padding {
+        --background: transparent !important;
+      }
     }
   
     h4 {
@@ -28,11 +36,11 @@
     }
   
     .activeEventTitle {
-      color: var(--ion-color-primary);
+      color: var(--ion-color-dark);
     }
   
     .location {
-      color: var(--ion-color-medium);
+      color: var(--ion-color-dark);
     }
 
     .keep-dates {

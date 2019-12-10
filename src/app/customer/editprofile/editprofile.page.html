@@ -64,12 +64,12 @@
         <img src="{{ profileImage }}" style="border-radius: 15px;" alt="">
       </ion-thumbnail>
       <p>{{ profileImageFileName }}</p>
-      <ion-button slot="end" size="small" (click)="selectImage()">Select</ion-button>
+      <ion-button slot="end" size="small" color="dark" (click)="selectImage()">Select</ion-button>
     </ion-item>
   </ion-list>
 
   <div class="keep-save-button">
-    <ion-button (click)="saveChanges(name,family,mobile,email,chatName,address,pass)" expand="block">Save</ion-button>
+    <ion-button (click)="saveChanges(name,family,mobile,email,chatName,address,pass)" color="primary" expand="block">Save</ion-button>
   </div>
 
 </ion-content>

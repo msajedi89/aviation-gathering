@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 const TOKEN_KEY = 'auth-token';
 const TICKET_ID_TO_SHOW_DETAILS = 'ticketidtoshowdetails';
 const FROM_WHERE = 'fromwhere';
+const FROM_WHERE_PAYPAL = 'fromwherepaypal';
 
 @Component({
   selector: 'app-tickets',
@@ -75,7 +76,9 @@ export class TicketsPage implements OnInit {
 
   payTicket(ticketID) {
     this.storage.set(TICKET_ID_TO_SHOW_DETAILS, ticketID).then(() => {
-      this.router.navigate(['paypalpage']);
+      this.storage.set(FROM_WHERE_PAYPAL, 'tickets').then(() => {
+        this.router.navigate(['paypalpage']);
+      });
     });
   }
 

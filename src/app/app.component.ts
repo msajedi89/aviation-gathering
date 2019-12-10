@@ -67,7 +67,7 @@ export class AppComponent {
     },
     {
       title: 'Customer Bookings',
-      url: '/list',
+      url: '/customerslistfortickets',
       icon: 'bookmarks'
     },
     {

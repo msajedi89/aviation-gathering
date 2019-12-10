@@ -129,8 +129,10 @@ export class SinglechatPage implements OnInit {
     } else {
       if (this.fromWhere == 'eventsubscribers') {
         this.router.navigate(['eventsubscribers']);
-      } else if (this.fromWhere == 'listallsubscribers'){
+      } else if (this.fromWhere == 'listallsubscribers') {
         this.router.navigate(['listallsubscribers']);
+      } else if (this.fromWhere == 'adminnewsinglechats') {
+        this.router.navigate(['adminnewsinglechats']);
       } else {
         this.router.navigate(['home']);
       }

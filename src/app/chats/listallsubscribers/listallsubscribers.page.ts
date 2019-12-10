@@ -35,6 +35,10 @@ export class ListallsubscribersPage implements OnInit {
     });
   }
 
+  goBack() {
+    this.router.navigate(['adminnewsinglechats']);
+  }
+
   async presentAlert(text) {
     const alertCt = await this.alertCtrl.create({
       message: text

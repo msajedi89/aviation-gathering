@@ -1,8 +1,9 @@
+ion-content {
+  --ion-background-color: #ffeac9;
+}
 
 // keep active events
 .keep-active-events-card {
-  //--background: url(../../assets/background-3.jpg);
-  //height: 200px;
   background-size: cover;
 
   .ion-no-padding {
@@ -41,6 +42,7 @@ h4 {
   margin-left: 10px;
   margin-bottom: 30px;
   font-weight: bold;
+  color: var(--ion-color-dark);
 }
 
 .keep-spinner {
@@ -62,6 +64,8 @@ h4 {
     padding: 5px;
   
     .cardAllEvents {
+      //--ion-background-color: #ffeac9;
+      --background: var(--ion-color-primary) !important;
       margin-left: 2px !important;
       margin-right: 2px !important;
     }
@@ -102,7 +106,7 @@ h4 {
     }
 
     .show-news-details {
-      color: var(--ion-color-primary) !important;
+      color: var(--ion-color-warning) !important;
     }
 
     .news-date {

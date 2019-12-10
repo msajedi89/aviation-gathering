@@ -42,7 +42,9 @@ const routes: Routes = [
   { path: 'signupdetails', loadChildren: './login/signupdetails/signupdetails.module#SignupdetailsPageModule' },
   { path: 'newsdetails', loadChildren: './pages/newsdetails/newsdetails.module#NewsdetailsPageModule' },
   { path: 'managecustomers', loadChildren: './admin/managecustomers/managecustomers.module#ManagecustomersPageModule' },
-  { path: 'customerdetails', loadChildren: './admin/customerdetails/customerdetails.module#CustomerdetailsPageModule' }
+  { path: 'customerdetails', loadChildren: './admin/customerdetails/customerdetails.module#CustomerdetailsPageModule' },
+  { path: 'customerslistfortickets', loadChildren: './admin/customerslistfortickets/customerslistfortickets.module#CustomerslistforticketsPageModule' },
+  { path: 'customertickets', loadChildren: './admin/customertickets/customertickets.module#CustomerticketsPageModule' }
 ];
 
 @NgModule({

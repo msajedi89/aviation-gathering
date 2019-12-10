@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 
 const TOKEN_KEY = 'auth-token';
 const CUSTOMER_ID_FOR_SINGLE_CHAT = 'userchatidforsinglechat';
+const FROM_WHERE = 'fromwhere';
 
 @Component({
   selector: 'app-adminnewsinglechats',
@@ -84,8 +85,10 @@ export class AdminnewsinglechatsPage implements OnInit {
   }
 
   goForChat(userChatID) {
-    this.storage.set(CUSTOMER_ID_FOR_SINGLE_CHAT, userChatID).then(() => {
-      this.router.navigate(['singlechat']);
+    this.storage.set(FROM_WHERE, 'adminnewsinglechats').then(() => {
+      this.storage.set(CUSTOMER_ID_FOR_SINGLE_CHAT, userChatID).then(() => {
+        this.router.navigate(['singlechat']);
+      });
     });
   }
 

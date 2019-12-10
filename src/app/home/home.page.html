@@ -58,8 +58,8 @@
           <img src="{{ eventsProfileImageUrl + item.Img }}" alt="" />
           <ion-card-content>
             <h5 style="font-weight: bold; margin-bottom: 10px;">{{ item.Title }}</h5>
-            <h6 style="margin-bottom: 30px;">{{ item.Location }}</h6>
-            <ion-button expand="block" color="primary" (click)="bookTicket(item.EventID)" size="small">DETAILS
+            <h6 style="margin-bottom: 30px; color: var(--ion-color-danger);">{{ item.Location }}</h6>
+            <ion-button expand="block" color="warning" (click)="bookTicket(item.EventID)" size="small">DETAILS
             </ion-button>
           </ion-card-content>
         </ion-card>
@@ -77,7 +77,7 @@
   <div class="all-news-block" *ngIf="isLoadedNews">
     <ion-item lines="none" class="keep-news-title">
       <h4 style="font-weight: bold;" slot="start">Latest News</h4>
-      <ion-button slot="end" expand="block" color="primary" fill="outline" (click)="showMoreNews()" size="small">Show
+      <ion-button slot="end" expand="block" color="warning" fill="outline" (click)="showMoreNews()" size="small">Show
         More
       </ion-button>
     </ion-item>

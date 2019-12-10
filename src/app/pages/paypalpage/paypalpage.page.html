@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-button (click)="goBack()" color="dark">
         <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
-        </ion-icon>Back
+        </ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
@@ -23,14 +23,14 @@
         <h5 class="keep-ticket-type">Ticket Type: {{ ticket.TicketType }}</h5>
         <h5 class="keep-ticket-count">Ticket Count: {{ ticket.Count }}</h5>
         <h5 class="keep-total-price">Total Payment: ${{ paymentAmount }}</h5>
-        <ion-button *ngIf="!hasPaid" expand="block" color="primary" (click)="payWithPaypal()" size="small">Pay with
+        <ion-button *ngIf="!hasPaid" expand="block" color="secondary" (click)="payWithPaypal()" size="small">Pay with
           PayPal
         </ion-button>
 
         <p>{{ paypalResult }}</p>
         <h3 *ngIf="transactionId" class="keep-transaction-id">Transaction ID: {{ transactionId }}</h3>
 
-        <ion-button *ngIf="hasPaid" expand="block" color="primary" (click)="goToSeeCustomerTickets()" size="small">Go to see your Tickets
+        <ion-button *ngIf="hasPaid" expand="block" color="dark" (click)="goToSeeCustomerTickets()" size="small">Go to see your Tickets
         </ion-button>
       </ion-card-content>
     </ion-card>

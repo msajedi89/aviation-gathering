@@ -16,6 +16,8 @@ export class ManagecustomersPage implements OnInit {
   allCustomers: any = '';
   userImageURL = '';
 
+  mySearch = '';
+
   isLoaded = false;
 
   constructor(private network: NetworkEngineServiceService, public navCtrl: NavController, public plt: Platform, public storage: Storage,
@@ -95,6 +97,20 @@ export class ManagecustomersPage implements OnInit {
     this.storage.set(USERID_FOR_DETAILS, userID).then(() => {
       this.router.navigate(['customerdetails']);
     });
+  }
+
+
+  // Filter Customers by thier Family
+  updateCustomers() {
+    if (this.mySearch != '') {
+      console.log('my Search: ' + this.mySearch);
+      this.network.filterCustomerByFamily(this.mySearch).then(data => {
+        console.log('I recieved Customers: ' + JSON.stringify(data));
+        this.allCustomers = data;
+      });
+    } else {
+      this.getCustomers();
+    }
   }
 
 }

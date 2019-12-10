@@ -67,6 +67,10 @@ export class GroupchatsPage implements OnInit {
     });
   }
 
+  goBack() {
+    this.router.navigate(['allgroupchats']);
+  }
+
   async presentAlert(text) {
     const alertCt = await this.alertCtrl.create({
       message: text

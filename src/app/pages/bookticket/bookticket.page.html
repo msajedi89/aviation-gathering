@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-button (click)="goBack()" color="dark">
         <ion-icon name="arrow-back" slot="start" style="padding-right: 0px; margin-right: 0px; font-size: 30px;">
-        </ion-icon>Back
+        </ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
@@ -18,7 +18,7 @@
     <h4>Attention</h4>
     <p>You are not logged in, if you want to Book Your Ticket, you need to login first.</p>
     <p class="keep-login-button">
-      <ion-button expand="block" color="primary" (click)="login()" size="small">Login</ion-button>
+      <ion-button expand="block" color="dark" (click)="login()" size="small">Login</ion-button>
     </p>
   </div>
 
@@ -53,7 +53,7 @@
           <ion-label>Ticket Count:</ion-label>
           <ion-item lines="none">
             <ion-icon name="person" color="dark" slot="start" style="font-size: 30px;"></ion-icon>
-            <ion-input type="text" [(ngModel)]="ticketCountInput" placeholder="Ticket Count"></ion-input>
+            <ion-input type="text" color="dark" [(ngModel)]="ticketCountInput" placeholder="Ticket Count"></ion-input>
           </ion-item>
         </div>
 

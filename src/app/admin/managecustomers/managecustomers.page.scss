@@ -1,3 +1,35 @@
+ion-content {
+  --ion-background-color: #ffeac9;
+}
+
+.header-card {
+  --background: var(--ion-color-primary) !important;
+
+  ion-card-title {
+    color: #c28338;
+  }
+}
+
+.search-toolbar {
+  padding-left: 30px;
+  padding-right: 30px;
+  
+  ion-searchbar {
+      background-color: #E8CAA6;
+      border-radius: 50px;
+      color: #c28338;
+      margin-top: 0px;
+      padding: 10px;
+      height: 35px;
+  }
+}
+
+.keep-no-customer {
+  margin-top: 40%;
+  text-align: center;
+  color: #c28338;
+}
+
 ion-item {
     --min-height: 80px;
 

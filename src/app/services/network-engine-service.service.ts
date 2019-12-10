@@ -428,4 +428,30 @@ export class NetworkEngineServiceService {
     return request.toPromise();
   }
 
+  // filter Customer By Family
+  filterCustomerByFamily(mySearch): Promise<any> {
+    const url = this.mainUrl + "filterCustomerByFamily.php";
+
+    const param = {
+      mySearch: mySearch
+    };
+
+    let request = this.http.post(url, param);
+
+    return request.toPromise();
+  }
+
+  // get Customer Tickets
+  getCustomerTickets(userID): Promise<any> {
+    const url = this.mainUrl + "getCustomerTickets.php";
+
+    const param = {
+      userID: userID
+    };
+
+    let request = this.http.post(url, param);
+
+    return request.toPromise();
+  }
+
 }
